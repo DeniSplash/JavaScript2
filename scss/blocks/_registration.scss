@@ -1,0 +1,158 @@
+.registration {
+    display: flex;
+    margin-bottom: 65px;
+    background-color: $pink-bkg;
+    min-height: 148px;
+
+    &__title {
+        padding: 60px 0 60px 0;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 29px;
+        color: $pink-color;
+        text-transform: uppercase;
+        display: block;
+    }
+}
+
+.reg-form {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 16px 0 16px;
+
+    &__input {
+        display: flex;
+        flex-direction: column;
+        /* flex-grow: 1; */
+        width: 360px;
+    }
+
+    &__input-title {
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 19px;
+        margin-bottom: 21px;
+    }
+
+    &__input-edit {
+        height: 45px;
+        width: 360px;
+        border-radius: 0px;
+        margin-bottom: 21px;
+        border: 1px solid #A4A4A4;
+        text-indent: 16px;
+        font-size: 13px;
+        font-weight: 300;
+        line-height: 16px;
+        outline: none;
+    }
+
+    &__input-edit:hover {
+        border: 1px solid $pink-color;
+    }
+
+    &__gender {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        width: 160px;
+        margin: 6px 0 32px 0;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+    }
+
+    &__input-subtitle {
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 19px;
+        margin-bottom: 21px;
+    }
+
+    &__input-text {
+        width: 360px;
+        font-size: 13px;
+        font-weight: 300;
+        line-height: 16px;
+        margin-bottom: 39px;
+    }
+
+    &__button {
+        height: 50px;
+        width: 167px;
+        border: 0px;
+        border-radius: 0px;
+        font-family: Lato;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 17px;
+        background-color: $pink-color;
+        color: $white-color;
+        margin-bottom: 96px;
+    }
+
+    &__button:hover,
+    &__button:focus {
+        background-color: $gray-color;
+    }
+
+    &__button:active {
+        background-color: $pink-color;
+    }
+
+
+    &__perks {
+
+        padding: 0 16px 0 16px;
+
+        @include tablet {
+            //width: 354px;
+        }
+
+        @include mobile {
+            //width: 354px;
+        }
+    }
+
+    &__perks-title {
+        font-size: 24px;
+        font-weight: 300;
+        line-height: 29px;
+        margin-bottom: 22px;
+    }
+
+    &__perks-text {
+        max-width: 652px;
+        font-size: 24px;
+        font-weight: 300;
+        line-height: 29px;
+        margin-bottom: 22px;
+    }
+
+    &__perks-list {
+        margin: 0;
+        list-style: none;
+    }
+
+    &__perks-item {
+        position: relative;
+        font-size: 24px;
+        font-weight: 300;
+        line-height: 29px;
+        margin-bottom: 16px;
+        padding-left: 30px;
+    }
+
+    &__perks-item:before {
+        content: '';
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        background-image: url(../img/ugly.svg);
+        background-size: 15px 15px;
+        z-index: 0;
+    }
+}

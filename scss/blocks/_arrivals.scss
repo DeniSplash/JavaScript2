@@ -1,0 +1,130 @@
+.arrivals {
+    margin-bottom: 65px;
+    background-color: $pink-bkg;
+    min-height: 148px;
+
+    &__wrp {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__title {
+        padding: 60px 0 60px 0;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 29px;
+        color: $pink-color;
+        text-transform: uppercase;
+        display: block;
+    }
+
+    &__list {
+        display: flex;
+        align-items: center;
+    }
+
+    &__item {
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 17px;
+        color: $gray-color-cart;
+        text-transform: uppercase;
+    }
+
+    &__item_activ {
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 17px;
+        color: $pink-color;
+        text-transform: uppercase;
+    }
+}
+
+.product-cart {
+    min-height: 600px;
+
+    &__wrp {
+        border: solid $gray-color 1px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-top: -50px;
+        z-index: 2;
+        position: relative;
+        background-color: $white-color;
+    }
+
+    &__title {
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 17px;
+        color: $pink-color;
+        text-transform: uppercase;
+        margin-top: 64px;
+    }
+
+    &__sub-title {
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 22px;
+        color: $gray-color-cart;
+        text-transform: uppercase;
+        margin-top: 28px;
+    }
+
+    &__text {
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 17px;
+        width: 555px;
+        margin-top: 48px;
+        text-align: center;
+    }
+
+    &__coast {
+        font-size: 24px;
+        font-weight: 300;
+        line-height: 29px;
+        color: $pink-color;
+        margin-top: 32px;
+    }
+
+    &__list {
+        display: flex;
+        gap: 20px;
+    }
+
+    .btn {
+        background-color: transparent;
+        color: gray;
+        border: none;
+        font-family: Lato;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 17px;
+        text-transform: uppercase;
+    }
+
+    &__button {
+        border: 1px $pink-color solid;
+        background-color: transparent;
+        display: flex;
+        margin-top: 48px;
+        margin-bottom: 72px;
+        align-items: center;
+        justify-content: center;
+        height: 47px;
+        width: 211px;
+    }
+
+    &__button-text {
+        color: $pink-color;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        color: $black-bkg;
+    }
+
+}

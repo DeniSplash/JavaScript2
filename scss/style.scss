@@ -1,0 +1,17 @@
+@charset "UTF-8";
+@import './variables';
+@import './reset';
+@import './general';
+@import './mixins';
+@import './fonts';
+
+@import './blocks/header';
+@import './blocks/nav-item';
+@import './blocks/brand';
+@import './blocks/sales';
+@import './blocks/products';
+@import './blocks/advantages';
+@import './blocks/footer';
+@import './blocks/registration';
+@import './blocks/cart';
+@import './blocks/arrivals';

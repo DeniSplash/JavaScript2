@@ -1,0 +1,239 @@
+.shopping-cart {
+    display: flex;
+    margin-bottom: 65px;
+    background-color: $pink-bkg;
+    min-height: 148px;
+
+    &__title {
+        padding: 60px 0 60px 0;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 29px;
+        color: $pink-color;
+        text-transform: uppercase;
+    }
+}
+
+.cart {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 16px 32px 16px;
+
+    &__item-title {
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 29px;
+        text-transform: uppercase;
+        margin: 22px 0 42px 32px;
+    }
+
+    &__item-text {
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 26px;
+        color: $gray-color-cart;
+        text-transform: capitalize;
+        margin-top: 6px;
+        margin-bottom: 6px;
+        margin-left: 32px;
+    }
+
+    &__item-coast {
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 26px;
+        color: $pink-color;
+        margin-bottom: 6px;
+    }
+
+    &__item-quant {
+        height: 24px;
+        width: 24px;
+        border: 1px solid $pink-bkg border-radius 0px;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 22px;
+        color: $gray-color-cart;
+        padding-left: 24px;
+        align-content: center;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    &__item {
+        height: 306px;
+        width: 652px;
+        background-color: $white-color;
+        box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+        display: flex;
+        position: relative;
+    }
+
+    &__item-btn-close {
+        position: absolute;
+        transform: translate(602px, 28px);
+        background-color: transparent;
+        border: none;
+        fill: $gray-color-cart
+    }
+
+    &__item-btn-close:hover {
+        fill: $pink-color;
+        cursor: pointer;
+    }
+
+    &__item-btn-close:active {
+        fill: $black-bkg;
+        cursor: pointer;
+    }
+
+    &__input {
+        width: 360px;
+        //display: flex;
+        //justify-content: space-between;
+    }
+
+    &__input-form {
+        //display: flex;
+        //flex-direction: column;
+    }
+
+    &__input-title {
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 19px;
+        margin-bottom: 21px;
+        text-transform: uppercase;
+    }
+
+    &__input-edit {
+        height: 45px;
+        width: 360px;
+        border-radius: 0px;
+        margin-bottom: 21px;
+        border: 1px solid #A4A4A4;
+        text-indent: 16px;
+        font-size: 13px;
+        font-weight: 300;
+        line-height: 16px;
+        outline: none;
+        text-transform: capitalize;
+    }
+
+    &__input-edit:hover {
+        border: 1px solid $pink-color;
+    }
+
+    &__input-subtitle {
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 19px;
+        margin-bottom: 21px;
+    }
+
+    &__input-text {
+        width: 360px;
+        font-size: 13px;
+        font-weight: 300;
+        line-height: 16px;
+        margin-bottom: 39px;
+    }
+
+    &__button-wrp {
+        margin-top: 72px;
+        margin-bottom: 96px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+
+    &__button {
+        height: 49px;
+        width: 234px;
+        border: 1px solid $gray-color;
+        border-radius: 0px;
+        background-color: transparent;
+        color: $gray-color;
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 17px;
+        text-transform: uppercase;
+    }
+
+    &__button:hover,
+    &__button:focus {
+        background-color: $pink-color;
+        color: $black-bkg;
+        border: 0px solid $gray-color;
+    }
+
+    &__input-button {
+        height: 34px;
+        width: 120px;
+        border: 1px solid $gray-color;
+        border-radius: 0px;
+        background-color: transparent;
+        color: $gray-color;
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 17px;
+        text-transform: uppercase;
+    }
+
+    &__input-button:active {
+        background-color: $pink-color;
+    }
+
+    &__check-wrp {
+        height: 214px;
+        width: 360px;
+        background-color: #F5F3F3;
+        margin-top: 58px;
+    }
+
+    &__text-sub {
+        font-size: 11px;
+        font-weight: 400;
+        line-height: 13px;
+        text-transform: capitalize;
+        padding-top: 39px;
+        margin: 0 28px 12px 218px;
+    }
+
+    &__text-grand {
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 19px;
+        text-transform: uppercase;
+        margin: 0px 28px 12px 153px;
+    }
+
+    &__check-wrp-button {
+        height: 50px;
+        width: 273px;
+        border-radius: 0px;
+        border: none;
+        color: $white-color;
+        background-color: $pink-color;
+        text-transform: uppercase;
+        margin-top: 10px;
+        margin-left: 44px;
+    }
+
+    &__check-wrp-button:hover {
+        color: $black-bkg;
+        background-color: transparent;
+        border: 1px solid $pink-color;
+    }
+
+    &__check-wrp-button:active {
+        color: $white-color;
+        background-color: $pink-color;
+        border: 1px solid $pink-color;
+    }
+}
