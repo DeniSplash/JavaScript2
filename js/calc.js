@@ -1,148 +1,74 @@
-const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+'use strict';
 
-class GoodsItem {
-    constructor(product_name, price, image) {
-    this.product_name = product_name;
-    this.price = price;
-    this.image = image;
-    }
+document.querySelector('.btn-all').addEventListener('click', () => {
+    //alert('hidden');
+    const t2 = document.querySelector(".card-text-all");
 
-    render() {
-    return `<div class="col"">
-                        <div class="card shadow-sm">
-                            <img alt="товар" src=${this.image} width="100%" height="100%" fill="#55595c">
-                            <div class="card-body">
-                                <p class="card-text">${this.product_name}</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Добавить</button>
-                                    </div>
-                                    <small class="text-muted">${this.price} $</small>
-                                </div>
-                            </div>
-                        </div>
-                </div>`;
-    }
-}
-class GoodsList {
-    constructor(container = '.products'){
-        this.container = container;
-        this.goods = [];
-        this._getProducts()
-            .then(data => { 
-                this.goods = data;
-                //console.log(data);
-                this.render()
-            });
-    }
+    var regexp = /'/g;
+    let str = t2.firstChild.nodeValue;
 
-    _getProducts(){
-        return fetch(`${API}/catalogData.json`)
-            .then(result => result.json())
-            .catch(error => {
-                console.log(error);
-            });     
-    }
+    t2.firstChild.nodeValue = str.replace(regexp, '"');
+});
 
-    render() {
-        let listHtml = '';
-            this.goods.forEach(good => {
-                const goodItem = new GoodsItem(good.product_name, good.price, 'img/mon.jpg');
-                listHtml += goodItem.render();
-        });
-        document.querySelector('.goods-list').innerHTML = listHtml;
-    }
+document.querySelector('.btn-one').addEventListener('click', () => {
+    //alert('hidden');
+    const t2 = document.querySelector(".card-text-one");
 
-    summAllGoods() {
-        let summ = 0;
-        for (let index = 0; index < this.goods.length; index++) {
-            summ += this.goods[index].price;
+    var regexp = /\b'\b/gi;
+    var regexp2 = /'/gi;
+    var regexp3 = /\|\|/gi;
+    let str = t2.firstChild.nodeValue;
+
+    // var regexp = /\w'\w/gi;
+
+    // str = str.replace(regexp, '||');
+    // str = str.replace("'", '"');
+    // str = str.replace("||", ''');
+
+    str = str.replace(regexp, "||");
+    str = str.replace(regexp2, '"');
+    t2.firstChild.nodeValue = str.replace(regexp3, "'");
+});
+
+
+document.querySelector('.btn-valid').addEventListener('click', () => {
+    //alert('hidden');
+    let name = document.querySelector(".name");
+    let tel = document.querySelector(".tel");
+    let mail = document.querySelector(".mail");
+
+    const regexp1 = /[a-zA-Zа-яА-Я]+/gi;
+    const regexp2 = /(\+7){1}(\(\d{3}\)){1}\d{3}-\d{4}/;
+    const regexp3 = /^([a-z0-9_\.-]+)@([a-z0-9_\.-]+)\.([a-z\.]{2,6})$/;
+
+    if (name.value.length > 0 && name.value.match(regexp1) !== null) {
+        if (name.value.match(regexp1)[0] !== name.value) {
+            name.style.borderColor = "red";
+        } else {
+            name.style.borderColor = "black";
         }
-        return summ;
-    }
-}
-
-const list = new GoodsList();
-//alert(`Сумма всех товаров - ${list.summAllGoods()} $`);
-
-////////////////////////////////////////////////////////////////////////////////////////////////
-class BasketItem {
-    constructor(name, price, quantity) {
-        this.name = name;
-        this.price = price;
-        this.quantity = quantity;
+    } else {
+        name.style.borderColor = "red";
     }
 
-    render() {
-        return  `<div class="modal-body py-0">
-                    <p class="card-text">Наименование: ${this.name}</p>
-                    <p class="card-text">Цена: ${this.price}</p>
-                    <p class="card-text">Количество: ${this.quantity}</p>
-                    <hr>
-                </div>`;
+    if (tel.value.length > 0 && tel.value.match(regexp2) !== null) {
+        if (tel.value.match(regexp2)[0] !== tel.value) {
+            tel.style.borderColor = "red";
+        } else {
+            tel.style.borderColor = "black";
         }
-    
-}
-
-class Basket {
-    constructor(container = '.basket-list'){
-        this.container = container;
-        this.goods = [];
-        this._clickBasket();
-        this._getBasketItem()
-            .then(data => { 
-                this.goods = data.contents;
-                console.log(data.contents);
-                this.render()
-            });
+    } else {
+        tel.style.borderColor = "red";
     }
 
-    _getBasketItem(){
-        return fetch(`${API}/getBasket.json`)
-            .then(result => result.json())
-            .catch(error => {
-                console.log(error);
-            });     
+    if (mail.value.length > 0 && mail.value.match(regexp3) !== null) {
+        if (mail.value.match(regexp3)[0] !== mail.value) {
+            mail.style.borderColor = "red";
+        } else {
+            mail.style.borderColor = "black";
+        }
+    } else {
+        mail.style.borderColor = "red";
     }
 
-    _clickBasket() {
-        document.querySelector('.btn-basket').addEventListener("click", 
-        () => {document.querySelector('.modal').classList.toggle("invisible");});
-    }
-
-    render() {
-        let listHtml = '';
-            this.goods.forEach(good => {
-                console.log(good);
-                const basketItem = new BasketItem(good.product_name, good.price, good.quantity);
-                listHtml += basketItem.render();
-        });
-        document.querySelector('.basket-list').innerHTML = listHtml;
-    }
-
-    addItem(item) {
-        this.goods.push(item);
-    }
-
-    delItem(item) {
-        this.goods.splice(this.goods.indexOf(item), 1);
-    }
-
-    editItem(item, count) {
-        this.goods[this.goods.indexOf(item)].count = count;
-    }
-
-    clearBasket() {
-        this.goods.splice(0, this.goods.length);
-    }
-
-    summTotal() {
-        let sum = 0;
-        this.items.forEach (item => { 
-            sum += item.price*item.count;
-        });
-        return summ;
-    }
-}
-
- new Basket();
+});
