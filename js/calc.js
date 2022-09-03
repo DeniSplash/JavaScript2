@@ -1,74 +1,63 @@
-'use strict';
+const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
 
-document.querySelector('.btn-all').addEventListener('click', () => {
-    //alert('hidden');
-    const t2 = document.querySelector(".card-text-all");
+const app = new Vue({
+    el: '#app',
+    data: {
+        catalogUrl: '/catalogData.json',
+        products: [],
+        filtered: [],
+        cart: [],
+        imgCatalog: 'https://via.placeholder.com/200x150',
+        userSearch: '',
+        show: false,
+        countProduct: false
+    },
+    methods: {
+        filter() {
+            console.log(this.userSearch);
+            const regexp = new RegExp(this.userSearch, 'i');
+            this.filtered = this.products.filter(product => regexp.test(product.product_name));
+        },
+        getJson(url) {
+            return fetch(url)
+                .then(result => result.json())
+                .catch(error => {
+                    console.log(error);
+                })
+        },
+        addProduct(item) {
+            console.log(item.id_product);
 
-    var regexp = /'/g;
-    let str = t2.firstChild.nodeValue;
+            let find = this.cart.find(product => item.product_name === product.product_name);
+            if (find) {
+                find.quantity++;
+            } else {
+                // let itemCart = Object.assign(item,{quantity:1});
+                this.$set(item, 'quantity', 1);
+                this.cart.push(item);
 
-    t2.firstChild.nodeValue = str.replace(regexp, '"');
-});
+            }
+        },
+        showBasket() {
+            this.checkBasket();
+            this.show = !this.show;
+        },
+        checkBasket() {
+            if (this.cart.length > 0) {
+                this.countProduct = true;
+            }
 
-document.querySelector('.btn-one').addEventListener('click', () => {
-    //alert('hidden');
-    const t2 = document.querySelector(".card-text-one");
-
-    var regexp = /\b'\b/gi;
-    var regexp2 = /'/gi;
-    var regexp3 = /\|\|/gi;
-    let str = t2.firstChild.nodeValue;
-
-    // var regexp = /\w'\w/gi;
-
-    // str = str.replace(regexp, '||');
-    // str = str.replace("'", '"');
-    // str = str.replace("||", ''');
-
-    str = str.replace(regexp, "||");
-    str = str.replace(regexp2, '"');
-    t2.firstChild.nodeValue = str.replace(regexp3, "'");
-});
-
-
-document.querySelector('.btn-valid').addEventListener('click', () => {
-    //alert('hidden');
-    let name = document.querySelector(".name");
-    let tel = document.querySelector(".tel");
-    let mail = document.querySelector(".mail");
-
-    const regexp1 = /[a-zA-Zа-яА-Я]+/gi;
-    const regexp2 = /(\+7){1}(\(\d{3}\)){1}\d{3}-\d{4}/;
-    const regexp3 = /^([a-z0-9_\.-]+)@([a-z0-9_\.-]+)\.([a-z\.]{2,6})$/;
-
-    if (name.value.length > 0 && name.value.match(regexp1) !== null) {
-        if (name.value.match(regexp1)[0] !== name.value) {
-            name.style.borderColor = "red";
-        } else {
-            name.style.borderColor = "black";
         }
-    } else {
-        name.style.borderColor = "red";
-    }
+    },
+    mounted() {
+        this.getJson(`${API + this.catalogUrl}`)
+            .then(data => {
+                for (let el of data) {
+                    this.products.push(el);
+                }
+            });
 
-    if (tel.value.length > 0 && tel.value.match(regexp2) !== null) {
-        if (tel.value.match(regexp2)[0] !== tel.value) {
-            tel.style.borderColor = "red";
-        } else {
-            tel.style.borderColor = "black";
-        }
-    } else {
-        tel.style.borderColor = "red";
-    }
+        this.filtered = this.products;
 
-    if (mail.value.length > 0 && mail.value.match(regexp3) !== null) {
-        if (mail.value.match(regexp3)[0] !== mail.value) {
-            mail.style.borderColor = "red";
-        } else {
-            mail.style.borderColor = "black";
-        }
-    } else {
-        mail.style.borderColor = "red";
     }
-
-});
+})
