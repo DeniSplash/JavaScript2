@@ -3,7 +3,7 @@
     "countGoods": 2,
     "contents": [
         {
-            "quantity": 2,
+            "quantity": 1,
             "id_product": 6,
             "imgProduct": "img/product-6.png",
             "product_name": "Another One",
@@ -17,6 +17,14 @@
             "product_name": "Another Product",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             "price": 500
+        },
+        {
+            "quantity": 1,
+            "id_product": 1,
+            "imgProduct": "img/product-1.png",
+            "product_name": "Awesome Product",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "price": 100
         }
     ]
 }
